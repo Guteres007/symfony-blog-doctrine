@@ -16,14 +16,6 @@ class PostService
       $this->postRepository = $postRepository;
   }
 
-  public function getAllPosts()
-  {
-      return $this->postRepository->getAllPosts();
-  }
-
-  public function getPostById($id)
-  {
-      return $this->postRepository->findPostById($id);
-  }
+ // Zde bude třeba query kde se budu dotazovat na dvě repository. Třeba post tag
 
 }

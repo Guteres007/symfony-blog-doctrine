@@ -2,16 +2,16 @@
 
 namespace App\Controller;
 
-use App\Service\PostService;
+use App\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
-    public $postService;
-    public function __construct(PostService $postService)
+    public $postRepository;
+    public function __construct(PostRepository $postRepository)
     {
-        $this->postService = $postService;
+        $this->postRepository = $postRepository;
     }
 
     /**
@@ -19,7 +19,7 @@ class PostController extends AbstractController
      */
     public function index()
     {
-        $posts = $this->postService->getAllPosts();
+        $posts = $this->postRepository->getAllPosts();
         return $this->render('post/index.html.twig', [
             'posts' => $posts,
         ]);
@@ -38,7 +38,7 @@ class PostController extends AbstractController
      */
     public function show($id)
     {
-        $post = $this->postService->getPostById($id);
+        $post = $this->postRepository->findPostById($id);
         return $this->render('post/show.html.twig',['post'=> $post]);
     }
 }
