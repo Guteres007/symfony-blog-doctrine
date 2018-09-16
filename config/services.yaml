@@ -7,6 +7,8 @@ parameters:
     locale: 'en'
 
 services:
+    App\Service\PostService:
+      public: false
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

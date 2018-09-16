@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ all }}!{% endblock %}
+{% block title %}Hello {% endblock %}
 
 {% block body %}
-{{ all }}
+    {% for post in posts %}
+        {{ post.getTitle() }}
+        <br>
+        {{ post.getBody() }}
+        <br>
+        <hr>
+    {% endfor %}
 {% endblock %}
