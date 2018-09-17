@@ -25,7 +25,7 @@ class PostService
 
   public function findPostById($id)
   {
-      return $this->postRepository->find($id);
+      return $this->postRepository->getPost($id);
   }
  // Zde bude třeba query kde se budu dotazovat na dvě repository. Třeba post tag
 
