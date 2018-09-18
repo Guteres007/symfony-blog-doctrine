@@ -7,14 +7,19 @@
  */
 namespace App\Service;
 use App\Repository\PostRepository;
+use App\Entity\Post;
+use Doctrine\ORM\EntityManagerInterface;
+
 
 class PostService
 {
     private $postRepository;
+    private $entityManager;
 
-  public function __construct(PostRepository $postRepository )
+  public function __construct(PostRepository $postRepository, EntityManagerInterface $entityManager )
   {
       $this->postRepository = $postRepository;
+      $this->entityManager = $entityManager;
   }
 
 
@@ -29,8 +34,13 @@ class PostService
   }
 
   public function savePost($data)
-  {
-   return $this->postRepository->ulozit($data);
+  {   $post = new Post();
+      $post->setBody($data->getBody());
+      $post->setTitle($data->getTitle());
+      $this->entityManager->persist($post);
+      $this->entityManager->flush();
+
+
   }
 
  // Zde bude třeba query kde se budu dotazovat na dvě repository. Třeba post tag

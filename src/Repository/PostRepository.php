@@ -20,17 +20,4 @@ class PostRepository extends ServiceEntityRepository
        return $this->find($id);
    }
 
-    /**
-     * @param $title
-     * @param $body
-     */
-   public function ulozit($data)
-   {
-       $post = new Post();
-       $post->setBody($data->getBody());
-       $post->setTitle($data->getTitle());
-       $this->getEntityManager()->persist($post);
-       $this->getEntityManager()->flush();
-
-   }
 }
