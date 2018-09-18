@@ -27,6 +27,12 @@ class PostService
   {
       return $this->postRepository->getPost($id);
   }
+
+  public function savePost($data)
+  {
+   return $this->postRepository->ulozit($data);
+  }
+
  // Zde bude třeba query kde se budu dotazovat na dvě repository. Třeba post tag
 
 }
