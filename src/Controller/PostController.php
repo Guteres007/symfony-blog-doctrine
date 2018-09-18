@@ -26,11 +26,11 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/post/create", name="create_post")
+     * @Route("/post/new", name="new_post")
      */
-    public function create()
+    public function new()
     {
-       return $this->render('post/create.html.twig');
+       return $this->render('post/new.html.twig');
     }
 
     /**
